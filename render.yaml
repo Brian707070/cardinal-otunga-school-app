@@ -3,8 +3,11 @@ services:
     name: cardinal-otunga-app
     env: python
     plan: free
-    # install OS libraries before Python packages (required for Pillow)
-    buildCommand: apt-get update && apt-get install -y libjpeg-dev zlib1g-dev && pip install -r requirements.txt && python manage.py collectstatic --noinput
+    # install OS libs, upgrade pip/setuptools/wheel, then install packages
+    buildCommand: apt-get update && apt-get install -y libjpeg-dev zlib1g-dev && \
+                 pip install --upgrade pip setuptools wheel && \
+                 pip install --prefer-binary -r requirements.txt && \
+                 python manage.py collectstatic --noinput
     startCommand: gunicorn school.wsgi
     envVars:
       - key: DEBUG
