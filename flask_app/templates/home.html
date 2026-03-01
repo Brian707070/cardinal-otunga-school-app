@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero large">
+    <h1>Welcome to Cardinal Otunga School</h1>
+    <p class="tagline">Empowering students through technology and education</p>
+</div>
+
+<section class="info">
+    <h2>About Us</h2>
+    <p>Cardinal Otunga National School, located in Mosocho, is committed to providing a holistic education that combines academic excellence with character development. Our mobile-friendly web app helps parents, students, and staff stay connected and informed.</p>
+    <p class="quote">"Education is the most powerful weapon which you can use to change the world."<br>– Dr. Ezekiel Okeyo, Chief Principal</p>
+    <ul class="features">
+        <li>Student enrollment and profiles</li>
+        <li>Academic performance tracking</li>
+        <li>Attendance management</li>
+        <li>Announcements and event calendar</li>
+        <li>Communication portal for parents and teachers</li>
+        <li>School news and updates</li>
+        <li>Parent feedback and messaging</li>
+        <li>Event reminders and calendars</li>
+        <li>Mobile-friendly and accessible</li>
+    </ul>
+</section>
+
+<section class="media">
+    <h2>Watch Our Introduction</h2>
+    <p>Below is an embedded YouTube video introducing our school.</p>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ youtube_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</section>
+
+<section class="search">
+    <h2>Quick Search</h2>
+    <p>Pick a search engine and type your query:</p>
+    <form method="get" action="/">
+        <select name="engine">
+            <option value="bing" {% if engine=='bing' %}selected{% endif %}>Bing</option>
+            <option value="youtube" {% if engine=='youtube' %}selected{% endif %}>YouTube</option>
+            <option value="google" {% if engine=='google' %}selected{% endif %}>Google</option>
+            <option value="duckduckgo" {% if engine=='duckduckgo' %}selected{% endif %}>DuckDuckGo</option>
+        </select>
+        <input type="text" name="q" value="{{ query or '' }}" placeholder="Search">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if bing_results %}
+        <h3>Results for "{{ query }}" on {{ engine|capitalize }}:</h3>
+        <ul class="results">
+        {% for r in bing_results %}
+            <li>{{ r }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+
+<footer>
+    <p>&copy; 2026 - Made by Brian Obwogi</p>
+</footer>
+{% endblock %}

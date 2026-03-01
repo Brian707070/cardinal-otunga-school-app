@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: cardinal-otunga-app
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn school.wsgi
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: USE_POSTGRES
+        value: "True"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cardinal-otunga-db
+          property: connectionString
+  
+  - type: pserv
+    name: cardinal-otunga-db
+    env: postgres
+    plan: free
+    ipAllowList: []

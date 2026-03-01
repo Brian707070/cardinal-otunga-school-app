@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="hero">
+        <h1>🎓 Cardinal Otunga School</h1>
+        <p class="tagline">Excellence in Education • Mosocho, Kenya</p>
+        <p style="font-size: 1.1em; margin-top: 15px; opacity: 0.95;">Building Tomorrow's Leaders Through Quality Education</p>
+    </div>
+
+    <section class="search">
+        <h2>🔍 Quick Search</h2>
+        <p>Search across multiple platforms:</p>
+        <form method="get" id="searchForm" action="https://www.google.com/search" target="_blank">
+            <select name="engine" id="engineSelect" onchange="updateSearchForm()">
+                <option value="google">🔎 Google</option>
+                <option value="youtube">▶️ YouTube</option>
+                <option value="bing">🔵 Bing</option>
+                <option value="duckduckgo">🦆 DuckDuckGo</option>
+            </select>
+            <input type="text" name="q" id="searchInput" placeholder="Search anything..." required>
+            <button type="submit">Search</button>
+        </form>
+
+        <script>
+            function updateSearchForm() {
+                const engine = document.getElementById('engineSelect').value;
+                const form = document.getElementById('searchForm');
+                const searchInput = document.getElementById('searchInput');
+                
+                switch(engine) {
+                    case 'google':
+                        form.action = 'https://www.google.com/search';
+                        searchInput.name = 'q';
+                        break;
+                    case 'youtube':
+                        form.action = 'https://www.youtube.com/results';
+                        searchInput.name = 'search_query';
+                        break;
+                    case 'bing':
+                        form.action = 'https://www.bing.com/search';
+                        searchInput.name = 'q';
+                        break;
+                    case 'duckduckgo':
+                        form.action = 'https://duckduckgo.com/';
+                        searchInput.name = 'q';
+                        break;
+                }
+            }
+        </script>
+    </section>
+
+    <section class="stats">
+        <h2>📈 Our Achievement</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>500+</h3>
+                <p>Active Students</p>
+            </div>
+            <div class="stat-card">
+                <h3>50+</h3>
+                <p>Dedicated Staff</p>
+            </div>
+            <div class="stat-card">
+                <h3>25+</h3>
+                <p>Years Excellence</p>
+            </div>
+            <div class="stat-card">
+                <h3>98%</h3>
+                <p>Pass Rate</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info">
+        <h2>🏫 About Us</h2>
+        <p>Cardinal Otunga National School, located in the vibrant community of Mosocho, is committed to providing a holistic education that combines academic excellence with character development. Our mobile-friendly web app helps parents, students, and staff stay connected and informed.</p>
+        <p class="quote">"Education is the most powerful weapon which you can use to change the world."<br>– Dr. Ezekiel Okeyo, Chief Principal</p>
+        
+        <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">🎯 Key Features:</h3>
+        <ul class="features">
+            <li>Student Enrollment & Profiles</li>
+            <li>Academic Performance Tracking</li>
+            <li>Attendance Management</li>
+            <li>Event Calendar</li>
+            <li>Parent-Teacher Communication</li>
+            <li>School News & Updates</li>
+            <li>Performance Reports</li>
+            <li>Mobile-Friendly Access</li>
+        </ul>
+    </section>
+
+    <section class="programs">
+        <h2>📚 Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <h3>🏆 Academic Excellence</h3>
+                <p>Comprehensive curriculum covering all subjects with experienced teachers dedicated to student success.</p>
+            </div>
+            <div class="program-card">
+                <h3>⚽ Sports & Activities</h3>
+                <p>Football, volleyball, athletics, debate club, and various extracurricular activities for holistic development.</p>
+            </div>
+            <div class="program-card">
+                <h3>💻 Technology & Innovation</h3>
+                <p>Computer lab facilities and digital literacy programs to prepare students for the modern world.</p>
+            </div>
+            <div class="program-card">
+                <h3>🎨 Arts & Culture</h3>
+                <p>Music, drama, art classes, and cultural events celebrating diversity and creativity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-links">
+        <h2>🔗 Quick Links</h2>
+        <div class="links-grid">
+            <a href="#" class="link-card">
+                <span>👨‍🎓</span>
+                <h4>Student Portal</h4>
+                <p>Access grades and assignments</p>
+            </a>
+            <a href="#" class="link-card">
+                <span>👨‍👩‍👧</span>
+                <h4>Parent Portal</h4>
+                <p>Monitor your child's progress</p>
+            </a>
+            <a href="#" class="link-card">
+                <span>📋</span>
+                <h4>Admissions</h4>
+                <p>Join our school community</p>
+            </a>
+            <a href="#" class="link-card">
+                <span>📞</span>
+                <h4>Contact Us</h4>
+                <p>Get in touch with us</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>⭐ What People Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p>"Cardinal Otunga School has transformed my child's academic journey. The teachers are dedicated and caring."</p>
+                <h4>- Parent, Grade 5</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"A wonderful institution that nurtures both academics and character. Highly recommended!"</p>
+                <h4>- Community Leader</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"The holistic approach to education here ensures students become well-rounded individuals."</p>
+                <h4>- Former Student</h4>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2>📍 Contact Information</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h4>📍 Location</h4>
+                <p>Mosocho, Kenya</p>
+            </div>
+            <div class="contact-item">
+                <h4>📞 Phone</h4>
+                <p>+254 XXX XXX XXX</p>
+            </div>
+            <div class="contact-item">
+                <h4>📧 Email</h4>
+                <p>info@cardinalounga.ac.ke</p>
+            </div>
+            <div class="contact-item">
+                <h4>🕐 Hours</h4>
+                <p>Mon-Fri: 7:00 AM - 5:00 PM</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>🚀 Ready to Join Us?</h2>
+        <p>Start your journey to academic excellence and character development at Cardinal Otunga School</p>
+        <button onclick="alert('Admissions portal coming soon!')" class="cta-button">Apply Now</button>
+    </section>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>Cardinal Otunga School</h4>
+            <p>Empowering Excellence • Building Leaders</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Programs</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <p>Facebook • Twitter • Instagram</p>
+        </div>
+    </div>
+    <hr>
+    <p style="text-align: center; padding: 20px 0; margin: 0;">© 2026 Cardinal Otunga National School Mosocho</p>
+    <p style="text-align: center; color: #bbb; margin: 0;">Made by Brian Obwogi | Empowering Education Through Technology</p>
+</footer>
+{% endblock %}
