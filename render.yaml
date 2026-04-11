@@ -3,12 +3,20 @@ services:
     name: cardinal-otunga-app
     env: python
     plan: free
-    # install OS libs, upgrade pip/setuptools/wheel, then install packages
-    buildCommand: apt-get update && apt-get install -y libjpeg-dev zlib1g-dev && \
-                 pip install --upgrade pip setuptools wheel && \
-                 pip install --prefer-binary -r requirements.txt && \
-                 python manage.py collectstatic --noinput
-    startCommand: gunicorn school.wsgi
+    pythonVersion: 3.9
+    buildCommand: >
+      apt-get update &&
+      apt-get install -y libjpeg-dev zlib1g-dev &&
+      pip install --upgrade pip setuptools wheel &&
+      pip install -r requirements.txt &&
+      python manage.py collectstatic --noinput
+    startCommand: >
+      gunicorn
+      --workers 3
+      --worker-class sync
+      --timeout 60
+      --bind 0.0.0.0:10000
+      school.wsgi
     envVars:
       - key: DEBUG
         value: "False"
@@ -16,6 +24,10 @@ services:
         value: "True"
       - key: SECRET_KEY
         generateValue: true
+      - key: ALLOWED_HOSTS
+        value: "*.onrender.com"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "https://*.onrender.com"
       - key: DATABASE_URL
         fromDatabase:
           name: cardinal-otunga-db
